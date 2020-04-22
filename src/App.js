@@ -1,11 +1,16 @@
 import React from 'react';
+import { Cards, Chart, CountryPicker } from './components';
+
+import styles from './App.module.css';
 
 export default class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <h1>Welcome to COVID-19 Tracker App!</h1>
-      </React.Fragment>
+      <div className={styles.container}>
+        <Cards />
+        <Chart />
+        <CountryPicker />
+      </div>
     );
   }
 }
