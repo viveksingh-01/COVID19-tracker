@@ -20,16 +20,20 @@ class Chart extends React.Component {
   lineChart() {
     const { dailyData } = this.state;
     const graphData = {
-      labels: dailyData.map((item) => item.date),
+      labels: dailyData.map(({ date }) => date),
       datasets: [
         {
-          data: dailyData.map((item) => item.confirmed),
+          data: dailyData.map(({ confirmed }) => confirmed),
           label: 'Confirmed',
+          borderColor: 'rgba(0, 0, 255, 0.5)',
+          backgroundColor: 'rgba(0, 0, 255, 0.1)',
           fill: true
         },
         {
-          data: dailyData.map((item) => item.deaths),
+          data: dailyData.map(({ deaths }) => deaths),
           label: 'Deaths',
+          borderColor: 'red',
+          backgroundColor: 'rgba(255, 0, 0, 0.5)',
           fill: true
         }
       ]
