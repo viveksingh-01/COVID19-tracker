@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import cx from 'classnames';
 import { Cards, Chart, CountryPicker } from './components';
 import { fetchData } from './api';
 
@@ -17,7 +19,7 @@ export default class App extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <div className={styles.container}>
+      <div className={cx('container', styles.container)}>
         <Cards data={data} />
         <Chart />
         <CountryPicker />
