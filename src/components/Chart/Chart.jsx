@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchDailyData } from './../../api';
+import { fetchDailyData } from '../../services';
 import { Line } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
@@ -14,7 +14,6 @@ class Chart extends React.Component {
     this.setState({
       dailyData: data
     });
-    console.log(this.state.dailyData);
   }
 
   lineChart() {
