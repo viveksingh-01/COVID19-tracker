@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import cx from 'classnames';
+import logo from './assets/images/covid-19.png';
 import { Cards, Chart, CountryPicker } from './components';
 import { fetchData } from './services';
 
@@ -25,7 +26,8 @@ export default class App extends React.Component {
   render() {
     const { data, country } = this.state;
     return (
-      <div className={cx('container', styles.container)}>
+      <div className={cx('container my-5', styles.container)}>
+        <img src={logo} className={styles.image} alt={'COVID-19'} />
         <Cards data={data} />
         <CountryPicker
           handleCountryChange={this.handleCountryChange.bind(this)}
