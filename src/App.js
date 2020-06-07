@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './assets/images/covid-19.png';
-import { Cards, Chart, CountryPicker } from './components';
+import { Logo, Cards, Chart, CountryPicker } from './components';
 import { fetchData } from './services';
 
 import styles from './App.module.css';
@@ -27,7 +26,7 @@ export default class App extends React.Component {
     return (
       <div className="container my-5">
         <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-between">
-          <img src={logo} className={styles.image} alt={'COVID-19'} />
+          <Logo />
           <div className="mt-5 mt-md-auto">
             <CountryPicker
               handleCountryChange={this.handleCountryChange.bind(this)}
