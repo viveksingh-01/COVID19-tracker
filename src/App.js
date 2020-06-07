@@ -17,9 +17,9 @@ export default class App extends React.Component {
     this.setState({ data: fetchedData });
   }
 
-  handleCountryChange(country) {
-    this.setState({ country });
-    console.log(country);
+  async handleCountryChange(country) {
+    const fetchedData = await fetchData(country);
+    this.setState({ data: fetchedData, country });
   }
 
   render() {
@@ -27,7 +27,9 @@ export default class App extends React.Component {
     return (
       <div className={cx('container', styles.container)}>
         <Cards data={data} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <CountryPicker
+          handleCountryChange={this.handleCountryChange.bind(this)}
+        />
         <Chart />
       </div>
     );
