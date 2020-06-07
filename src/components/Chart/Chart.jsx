@@ -1,23 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchDailyData } from '../../services';
 import { Line } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
-class Chart extends React.Component {
-  constructor() {
-    super();
-    this.state = { dailyData: [] };
-  }
+const Chart = () => {
+  const [dailyData, setDailyData] = useState([]);
 
-  async componentDidMount() {
-    const data = await fetchDailyData();
-    this.setState({
-      dailyData: data
-    });
-  }
+  useEffect(() => {
+    const getDailyData = async () => {
+      setDailyData(await fetchDailyData());
+    };
+    getDailyData();
+  }, []);
 
-  lineChart() {
-    const { dailyData } = this.state;
+  const lineChart = () => {
     const graphData = {
       labels: dailyData.map(({ date }) => date),
       datasets: [
@@ -37,12 +33,10 @@ class Chart extends React.Component {
         }
       ]
     };
-    return <Line data={graphData} />;
-  }
+    return dailyData.length ? <Line data={graphData} /> : null;
+  };
 
-  render() {
-    return <div className={styles.container}>{this.lineChart()}</div>;
-  }
-}
+  return <div className={styles.container}>{lineChart()}</div>;
+};
 
 export default Chart;
