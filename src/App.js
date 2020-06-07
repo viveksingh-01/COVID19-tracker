@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import cx from 'classnames';
 import logo from './assets/images/covid-19.png';
 import { Cards, Chart, CountryPicker } from './components';
 import { fetchData } from './services';
@@ -26,13 +25,21 @@ export default class App extends React.Component {
   render() {
     const { data, country } = this.state;
     return (
-      <div className={cx('container my-5', styles.container)}>
-        <img src={logo} className={styles.image} alt={'COVID-19'} />
-        <Cards data={data} />
-        <CountryPicker
-          handleCountryChange={this.handleCountryChange.bind(this)}
-        />
-        <Chart data={data} country={country} />
+      <div className="container my-5">
+        <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-between">
+          <img src={logo} className={styles.image} alt={'COVID-19'} />
+          <div className="mt-5 mt-md-auto">
+            <CountryPicker
+              handleCountryChange={this.handleCountryChange.bind(this)}
+            />
+          </div>
+        </div>
+        <div className={styles.container}>
+          <div className="my-3">
+            <Cards data={data} />
+          </div>
+          <Chart data={data} country={country} />
+        </div>
       </div>
     );
   }

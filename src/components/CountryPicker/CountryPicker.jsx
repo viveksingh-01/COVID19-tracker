@@ -13,21 +13,19 @@ const CountryPicker = ({ handleCountryChange }) => {
   }, []);
 
   return (
-    <div className="mb-3">
-      <FormControl>
-        <NativeSelect
-          defaultValue=""
-          onChange={(e) => handleCountryChange(e.target.value)}
-        >
-          <option value="global">Global</option>
-          {countries.map((country, index) => (
-            <option key={index} value={country}>
-              {country}
-            </option>
-          ))}
-        </NativeSelect>
-      </FormControl>
-    </div>
+    <FormControl>
+      <NativeSelect
+        defaultValue=""
+        onChange={(e) => handleCountryChange(e.target.value)}
+      >
+        <option value="global">Global</option>
+        {countries.map((country, index) => (
+          <option key={index} value={country}>
+            {country}
+          </option>
+        ))}
+      </NativeSelect>
+    </FormControl>
   );
 };
 
